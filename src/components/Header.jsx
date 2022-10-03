@@ -1,5 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import Links from './Links'
 
 const Container = styled.header`
     background: #edeae5;
@@ -33,23 +36,37 @@ const Button = styled.button`
     border: none;
 `
 
-const Middle = styled.h1`
+const Middle = styled.div`
     flex: 1;
-    text-align: center
+    text-align: center;
+    text-decoration: none;
+`
+const Title = styled.h1`
 `
 
 
 const Header = () => {
+  const quantity = useSelector((state) => state.cart.value);
   return (
     <Container>
         <Left>
             Search: <Input type="text" />
         </Left>
-        <Middle>Nick's Inc</Middle>
+        <Middle>
+            <Links to='/'>
+                <Title>Nick's Inc</Title>
+            </Links>
+        </Middle>
         <Right>
-            <Button>Register</Button>
-            <Button>Sign In</Button>
-            <Button>Cart</Button>
+            <Link to='/register'>
+                <Button>Register</Button>
+            </Link>
+            <Link to='/login'>
+                <Button>Sign In</Button>
+            </Link>
+            <Link to='/cart'>
+                <Button>Cart {quantity}</Button>
+            </Link>
         </Right>
     </Container>
   )

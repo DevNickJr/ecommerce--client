@@ -116,7 +116,6 @@ const Home = () => {
     const [count, setCount] = React.useState(0);
     useEffect(() => {
         setTimeout(()=> {
-            console.log(count)
             if (count<2) {
                 setCount(prev => prev+1);
             }else {

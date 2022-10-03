@@ -4,6 +4,8 @@ import Ads from '../components/Ads'
 import styled from 'styled-components'
 import { categories } from "../data"
 import { tablet } from '../responsive'
+import { increment } from '../features/cart/cartSlice'
+import { useDispatch } from 'react-redux'
 
 const Container = styled.div`
     padding: 1rem;
@@ -62,6 +64,7 @@ const SizeContainer = styled.div`
     margin: 1rem 0; 
 `
 const Product = () => {
+  const dispatch = useDispatch();
   return (
     <>
         <Header />
@@ -96,7 +99,7 @@ const Product = () => {
                     <button>-</button>
                     <span>1</span>
                     <button>+</button>
-                    <button>Add to Cart</button>
+                    <button onClick={() => dispatch(increment())}>Add to Cart</button>
                 </div>
             </Right>
         </Container>
