@@ -4,8 +4,8 @@ import Ads from '../components/Ads'
 import styled from 'styled-components'
 import { categories } from "../data"
 import { tablet } from '../responsive'
-import { increment } from '../features/cart/cartSlice'
-import { useDispatch } from 'react-redux'
+import { addProduct } from '../features/cart/cartSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Container = styled.div`
     padding: 1rem;
@@ -65,6 +65,8 @@ const SizeContainer = styled.div`
 `
 const Product = () => {
   const dispatch = useDispatch();
+  const cart = useSelector(state => state.cart);
+  console.log(cart)
   return (
     <>
         <Header />
@@ -99,7 +101,7 @@ const Product = () => {
                     <button>-</button>
                     <span>1</span>
                     <button>+</button>
-                    <button onClick={() => dispatch(increment())}>Add to Cart</button>
+                    <button onClick={() => dispatch(addProduct({product: 1, price:40}))}>Add to Cart</button>
                 </div>
             </Right>
         </Container>

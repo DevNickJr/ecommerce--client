@@ -46,7 +46,7 @@ const Title = styled.h1`
 
 
 const Header = () => {
-  const quantity = useSelector((state) => state.cart.value);
+  const quantity = useSelector((state) => state.cart.quantity);
   return (
     <Container>
         <Left>
